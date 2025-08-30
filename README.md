@@ -1,0 +1,22 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# mercadopago
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+**WARNING: Very early stage and used only for my own purposes, the goal
+is to provide an easy-to-use api to the python package
+[mercadopago](https://github.com/mercadopago/sdk-python).**
+
+## Installation
+
+You can install the development version of mercadopago from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("JulioCollazos64/mercadopago")
+```
