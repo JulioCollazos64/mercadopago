@@ -1,3 +1,1 @@
-glue <- \(...){
-  paste0(...)
-}
+glue <- paste0
