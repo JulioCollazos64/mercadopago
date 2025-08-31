@@ -38,6 +38,7 @@ request_options <- function(
 #' @export
 build_preference <- function(
   back_urls,
+  items,
   notification_url = NULL,
   external_reference = NULL,
   integrator_id = NULL
@@ -60,8 +61,7 @@ build_preference <- function(
   c(
     back_urls,
     notification_url = notification_url,
-    external_reference = external_reference
-    integrator_id = integrator_id,
+    external_reference = external_reference,
+    integrator_id = integrator_id
   )
 }
-
