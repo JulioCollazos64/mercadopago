@@ -31,3 +31,37 @@ request_options <- function(
     max_retries = max_retries
   )
 }
+
+#' Build a preference
+#'
+#' @param back_urls List with 3 named elements `success`, `failure` and `pending`.
+#' @export
+build_preference <- function(
+  back_urls,
+  notification_url = NULL,
+  external_reference = NULL,
+  integrator_id = NULL
+) {
+  # fmt: skip
+  stopifnot(
+    is.list(back_urls) &&
+    length(back_urls) == 3L &&
+    all(names(back_urls) %in% c("success", "failure", "pending")))
+
+  if (!all(unlist(lapply(back_urls, is_protected)))) {
+    stop(
+      "All `back_urls` should be domains protected by HTTPS as stated by the documentation: https://www.mercadopago.com.pe/developers/es/changelog",
+      call. = FALSE
+    )
+  }
+  back_urls <- list(back_urls = back_urls)
+  back_urls
+
+  c(
+    back_urls,
+    notification_url = notification_url,
+    external_reference = external_reference
+    integrator_id = integrator_id,
+  )
+}
+
