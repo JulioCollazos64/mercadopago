@@ -32,7 +32,20 @@ request_options <- function(
   )
 }
 
+#' Format list items
+
+#' @noRd
+#' @keywords internal
+format_product_items <- function(items_dataframe) {
+  val <- split(x = items_dataframe, seq_len(nrow(items_dataframe)))
+  val <- unname(val)
+  val <- lapply(val, as.list)
+  list(items = val)
+}
+
 #' Build a preference
+#'
+#' A payment preference is an object or set of of information that represents the product or service you want to charge for. Within the Mercado Pago ecosystem, this object is known as `preference`. (https://www.mercadopago.com.pe/developers/en/docs/checkout-pro/configure-development-enviroment).
 #'
 #' @param back_urls List with 3 named elements `success`, `failure` and `pending`.
 #' @export
@@ -58,8 +71,11 @@ build_preference <- function(
   back_urls <- list(back_urls = back_urls)
   back_urls
 
+  items <- format_product_items(items)
+
   c(
     back_urls,
+    items,
     notification_url = notification_url,
     external_reference = external_reference,
     integrator_id = integrator_id
