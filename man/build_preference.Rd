@@ -14,6 +14,8 @@ build_preference(
 }
 \arguments{
 \item{back_urls}{List with 3 named elements \code{success}, \code{failure} and \code{pending}.}
+
+\item{items}{A data frame with one row per product item.}
 }
 \description{
 A payment preference is an object or set of of information that represents the product or service you want to charge for. Within the Mercado Pago ecosystem, this object is known as \code{preference}. (https://www.mercadopago.com.pe/developers/en/docs/checkout-pro/configure-development-enviroment).
