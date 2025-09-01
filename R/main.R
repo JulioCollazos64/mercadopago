@@ -53,6 +53,8 @@ format_product_items <- function(items_dataframe) {
 build_preference <- function(
   back_urls,
   items,
+  excluded_payment_methods = NULL,
+  installments = 12,
   notification_url = NULL,
   external_reference = NULL,
   integrator_id = NULL
@@ -74,9 +76,22 @@ build_preference <- function(
 
   items <- format_product_items(items)
 
+  payment_methods <- list(
+    payment_methods = list(
+      excluded_payment_methods = lapply(
+        X = excluded_payment_methods,
+        FUN = function(s) {
+          list(id = s)
+        }
+      ),
+      installments = installments
+    )
+  )
+
   c(
     back_urls,
     items,
+    payment_methods,
     notification_url = notification_url,
     external_reference = external_reference,
     integrator_id = integrator_id
